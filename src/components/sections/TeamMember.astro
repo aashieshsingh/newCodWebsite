@@ -1,0 +1,8 @@
+---
+const { name, role, image } = Astro.props;
+---
+<div class="bg-white shadow-md rounded-2xl p-6 text-center hover:shadow-lg transition duration-300">
+  <img src={image} alt={name} class="w-24 h-24 rounded-full mx-auto mb-4 object-cover" />
+  <h3 class="text-lg font-semibold">{name}</h3>
+  <p class="text-gray-500">{role}</p>
+</div>

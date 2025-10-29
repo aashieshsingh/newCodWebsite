@@ -1,0 +1,65 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Hero from '@components/sections/Hero.astro';
+import Features from '@components/sections/Features.astro';
+import { featureLists } from '@data/features';
+import RecentPosts from '@components/sections/RecentPosts.astro';
+import heroImage from '../assets/images/home/default-hero-2.jpg';
+
+const seoTitle = "MINErVA Network India | MINErVA: Mortality in India Established Through Verbal Autopises";
+const seoDescription = "MINErVA Network India | MINErVA: Mortality in India Established Through Verbal Autopises.";
+
+const heroContent = {
+    title: 'Mortality in India established through verbal autopsies (MINErVA)',
+    description: 'We provide technical assistance to RGI Office in conduct of the Verbal Autopsy based Cause of Death Ascertainment under the Sample Registration System.',
+    buttons: [
+        {
+            text: 'Join as a VA Coder',
+            link: 'https://causeofdeathindia.com/join-us-as-va-coder/',
+            target: '_blank'
+        },
+        
+    ],
+    backgroundImage: heroImage,
+    overlayOpacity: 0.2
+}
+
+const featuresSection = {
+    title: "Why Cause of Death Data Matters",
+    description: "Every life matters, and every death tells a story. Cause of Death India platform is a collaborative approach to strengthen the cause of death ascertainment system through verbal autopsies in India. It is developed by the MINErVA network.",
+    features: featureLists.main.features,
+    
+}
+
+const FooterCta = {
+    eyebrow: "Join The Community",
+    title: ' Start Building With Titan Core Today',
+    description: 'Titan Core is open-source and constantly improving. Join our community of developers to contribute, get support, or showcase what you\'ve built.',
+    hideCta: false,
+    button: {
+        text: 'Download Titan Core',
+        link: 'https://github.com/rspisarski/titan-core',
+        target: '_blank'
+    }
+}
+
+
+const recentPostsSection = {
+    eyebrow: "Recent Posts",
+    title: " ",
+    description: "",
+    button: {
+            text: "View All Posts",
+            link: "/blog",
+            variant: "primary" as const
+    }
+}
+---
+
+<Layout footerCta={FooterCta} title={seoTitle} description={seoDescription}>
+    <Hero content={heroContent} />
+    <Features content={featuresSection} padding="base" background="light" />
+    <RecentPosts content={recentPostsSection} background="base" padding="base" postsToShow={3} category="Theme Usage"/>
+   
+    
+</Layout>

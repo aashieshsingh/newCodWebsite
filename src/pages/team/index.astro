@@ -1,0 +1,74 @@
+---
+import Layout from '@layouts/Layout.astro';
+import InnerHero from '@components/sections/InnerHero.astro';
+import TeamMember from "@components/sections/TeamMember.astro";
+
+
+const seoTitle = "";
+const seoDescription = "";
+
+const heroContent = {
+    title: "Our Team",
+    description: "Meet the people behind the magic",
+}
+
+const team = [
+  {
+    name: "Dr. Anand Krishnan",
+    role: "Professor",
+    image: "/images/team/anand-sir.png",
+  },
+  {
+    name: "Dr. Baridalyne N",
+    role: "Professor",
+    image: "/images/team/bari-mam.png",
+  },
+  {
+    name: "Dr. Sumit Malhotra",
+    role: "Professor",
+    image: "/images/team/dr-sumit.png",
+  },
+  {
+    name: "Dr. Ravneet Kaur",
+    role: "Additional Professor",
+    image: "/images/team/ravneet.png",
+  },
+  {
+    name: "Dr. Vivek Gupta",
+    role: "Additional Professor",
+    image: "/images/team/vivek-gupta.jpg",
+  },
+  {
+    name: "Dr. Harshal Salve",
+    role: "Additional Professor",
+    image: "/images/team/harshal-salve.jpg",
+  },
+  {
+    name: "Dr. Rakesh Kumar",
+    role: "Additional Professor",
+    image: "/images/team/rakesh.png",
+  },
+  {
+    name: "Dr. Mohan Bairwa",
+    role: "Assistant Professor",
+    image: "/images/team/Mohan-Lal.jpg",
+  },
+  
+];
+---
+
+<Layout title={seoTitle} description={seoDescription}>
+
+    <InnerHero content={heroContent}  />
+  <section class="py-16">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold mb-12">Meet Our Team</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        {team.map((member) => (
+          <TeamMember name={member.name} role={member.role} image={member.image} />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

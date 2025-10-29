@@ -1,0 +1,36 @@
+---
+
+import { getBackgroundColor, getTextColor, getPaddingClass } from '@utils/styleUtils';
+
+
+const {
+    content,
+    background = 'base',
+    padding,
+    paddingTop,
+    paddingBottom
+} = Astro.props;
+
+const bgColor = getBackgroundColor(background);
+const textColor = getTextColor(background);
+const paddingClass = getPaddingClass({ padding, paddingTop, paddingBottom });
+
+---
+
+<section class:list={[bgColor, paddingClass]}>
+    <div class="site-container px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <div>
+                <h2 class="text-2xl font-bold mb-4">Get in Touch</h2>
+                <p>For collaborations, training, or queries, contact us at:</p>
+
+                <div class="mt-4">
+                 <a href="#" class="text-blue-600">Twitter</a> |
+                 <a href="#" class="text-blue-600">LinkedIn</a> |
+                 <a href="#" class="text-blue-600">YouTube</a>
+                </div>  
+            </div>
+        </div>
+    </div>
+</section>
