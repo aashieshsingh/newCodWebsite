@@ -1,15 +1,47 @@
 ---
-import Layout from "@layouts/Layout.astro"
-import InnerHero from "@components/sections/InnerHero.astro"
-import ContactInfo from "@components/sections/ContactInfo.astro"
+import Layout from "@layouts/Layout.astro";
+import InnerHero from "@components/sections/InnerHero.astro";
 
 const heroContent = {
     title: "Contact Us",
-    description: "Contact us for more information"
+    description: ""
 }
 ---
+<Layout>
+  <InnerHero content={heroContent} />
 
-<Layout title="Contact Us" description="Contact us for more information">
-    <InnerHero content={heroContent} />
-    <ContactInfo background="base" padding="base" />
+  <!-- Breadcrumb -->
+  <nav class="bg-gray-100 border-b border-gray-300">
+    <div class="max-w-5xl mx-auto px-4 py-2 text-sm text-gray-600">
+      <a href="/" class="text-blue-700 hover:underline">Home</a> &gt; 
+      <span>Contact Us</span>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <section class="max-w-5xl mx-auto px-4 py-12">
+
+    <p class="text-gray-800 mb-4 leading-relaxed">
+      For collaborations, training, or queries, contact us at:
+    </p>
+
+    <div class="   shadow rounded-xl p-6 border border-gray-200 mb-8">
+      <p class="text-gray-800 leading-relaxed mb-2"><strong>Dr. Anand Krishnan</strong></p>
+      <p class="text-gray-800 leading-relaxed mb-2">Room no 11, Centre for Community Medicine, Old OT Block,</p>
+      <p class="text-gray-800 leading-relaxed mb-2">AIIMS, New Delhi, Pin-110029, India.</p>
+
+      <p class="text-gray-800 leading-relaxed mt-4 mb-1"><strong>Email:</strong></p>
+      <p class="text-gray-800 leading-relaxed mb-2">
+        <a href="mailto:info@causeofdeathindia.com" class="text-blue-700 underline">info@causeofdeathindia.com</a><br/>
+        <a href="mailto:admin@causeofdeathindia.com" class="text-blue-700 underline">admin@causeofdeathindia.com</a>
+      </p>
+
+      <p class="text-gray-800 leading-relaxed"><strong>Contact No. :</strong> +91-7428956256</p>
+    </div>
+
+    <p class="text-gray-600 text-sm italic">
+      We look forward to hearing from you and will get back to you as soon as possible.
+    </p>
+
+  </section>
 </Layout>

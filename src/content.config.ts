@@ -15,6 +15,24 @@ const blog = defineCollection({
             publishDate: z.string().transform((str) => new Date(str)),
             publish: z.boolean().optional(),
             categories: z.array(z.enum(categoryNames as [string, ...string[]])),
+            gallery: z
+              .array(
+                 z.object({
+                    src: z.string(),          // image path
+                    title: z.string().optional(), // optional caption/title
+                    })
+             )
+            .optional(),
+            activities: z
+                .array(
+                 z.object({
+                    year: z.string(),
+                    items: z.array(z.string())
+         })
+  )
+  .optional(),
+
+
             seo: z
                 .object({
                     title: z.string().optional(),

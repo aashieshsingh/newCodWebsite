@@ -1,7 +1,14 @@
-import { Zap, Shield, Heart, Coffee, Smile, Type, TabletSmartphone, CodeXml } from 'lucide-astro';
+import { 
+  CheckCircle2, 
+  BarChart3,
+  Globe2,
+  AlertTriangle,
+  Activity,
+  Scale 
+} from 'lucide-astro';
 
-// Define the LucideIcon type based on the structure of Lucide icons
-type LucideIcon = typeof Zap;
+// Correct Lucide icon type for ANY icon
+type LucideIcon = typeof CheckCircle2;
 
 export interface Feature {
     icon: LucideIcon;
@@ -14,37 +21,40 @@ export interface FeatureList {
     features: Feature[];
 }
 
-// Example feature lists
 export const featureLists: Record<string, FeatureList> = {
     main: {
         id: 'main',
         features: [
             {
-                icon: Shield,
+                icon: BarChart3,
                 title: 'Informs national health priorities and disease control programs',
                 description: ''
             },
             {
-                icon: Shield,
+                icon: Globe2,
                 title: 'Helps track progress towards SDGs and UHC',
                 description: ''
             },
             {
-                icon: Shield,
+                icon: AlertTriangle,
                 title: 'Identifies emerging health threats',
                 description: ''
             },
             {
-                icon: Shield,
+                icon: Activity,
                 title: 'Guides allocation of health resources',
                 description: ''
             },
             {
-                icon: Shield,
+                icon: Scale,
                 title: 'Strengthens accountability and governance',
                 description: ''
             },
-            
+            {
+                icon: CheckCircle2,
+                title: 'Enables faster and evidence-based public health decision-making',
+                description: ''
+            },
         ]
     },
 };

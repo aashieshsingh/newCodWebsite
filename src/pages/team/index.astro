@@ -2,15 +2,16 @@
 import Layout from '@layouts/Layout.astro';
 import InnerHero from '@components/sections/InnerHero.astro';
 import TeamMember from "@components/sections/TeamMember.astro";
-
+import PIDataTable from '@components/PIDataTable.astro';
 
 const seoTitle = "";
 const seoDescription = "";
 
 const heroContent = {
     title: "Our Team",
-    description: "Meet the people behind the magic",
+    description: "",
 }
+
 
 const team = [
   {
@@ -50,7 +51,7 @@ const team = [
   },
   {
     name: "Dr. Mohan Bairwa",
-    role: "Assistant Professor",
+    role: "Associate Professor",
     image: "/images/team/Mohan-Lal.jpg",
   },
   
@@ -60,6 +61,13 @@ const team = [
 <Layout title={seoTitle} description={seoDescription}>
 
     <InnerHero content={heroContent}  />
+    <!-- Breadcrumb -->
+  <nav class="bg-gray-100 border-b border-gray-300">
+    <div class="max-w-5xl mx-auto px-4 py-2 text-sm text-gray-600">
+      <a href="/" class="text-blue-700 hover:underline">Home</a> &gt; 
+      <span>Team</span>
+    </div>
+  </nav>
   <section class="py-16">
     <div class="max-w-6xl mx-auto px-6 text-center">
       <h2 class="text-3xl font-bold mb-12">Meet Our Team</h2>
@@ -70,5 +78,12 @@ const team = [
         ))}
       </div>
     </div>
+    <br/>
+  <h1 class="text-2xl font-bold mb-4 text-center">
+  Below is the list of our Network Partners Across India
+</h1>
+  <PIDataTable />
+
   </section>
+
 </Layout>

@@ -1,0 +1,51 @@
+---
+import data from '../content/pi-data.json';
+---
+<div class="mt-8 shadow-lg rounded-2xl border border-gray-200 overflow-hidden">
+  
+  <!-- Desktop Table Header -->
+  <div class="hidden md:grid md:grid-cols-6 bg-blue-600 text-white uppercase text-xs font-semibold">
+    <div class="p-3">State</div>
+    <div class="p-3">District</div>
+    <div class="p-3">Institute</div>
+    <div class="p-3">Department</div>
+    <div class="p-3">Name</div>
+    <div class="p-3">Email</div>
+  </div>
+
+  <!-- Rows -->
+  {data.map((row, index) => (
+    <div class={`border-b border-gray-200 ${
+      index % 2 === 0 ? "bg-white" : "bg-gray-50"
+    } hover:bg-blue-50 transition`}>
+
+      <!-- Desktop View -->
+      <div class="hidden md:grid md:grid-cols-6 text-sm">
+        <div class="p-3">{row.State}</div>
+        <div class="p-3">{row.District}</div>
+        <div class="p-3">{row.Institute}</div>
+        <div class="p-3">{row.Deptt}</div>
+        <div class="p-3 font-semibold">{row.Name}</div>
+        <div class="p-3 text-blue-600 underline">
+          <a href={`mailto:${row.email}`}>{row.email}</a>
+        </div>
+      </div>
+
+      <!-- Mobile Card View -->
+      <div class="md:hidden p-4 space-y-2 text-sm bg-white">
+        <div><span class="font-medium text-gray-800">State:</span> {row.State}</div>
+        <div><span class="font-medium text-gray-800">District:</span> {row.District}</div>
+        <div><span class="font-medium text-gray-800">Institute:</span> {row.Institute}</div>
+        <div><span class="font-medium text-gray-800">Department:</span> {row.Deptt}</div>
+        <div><span class="font-medium text-gray-800">Name:</span> {row.Name}</div>
+        <div>
+          <span class="font-medium text-gray-800">Email:</span>{" "}
+          <a href={`mailto:${row.email}`} class="text-blue-600 underline">
+            {row.email}
+          </a>
+        </div>
+      </div>
+
+    </div>
+  ))}
+</div>

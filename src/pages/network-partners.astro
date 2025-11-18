@@ -1,0 +1,63 @@
+---
+import Layout from "@layouts/Layout.astro";
+import data from '../content/pi-data.json';
+
+// Build unique list based on State + District + Institute
+const seen = new Set();
+const uniqueRows = [];
+
+for (const row of data) {
+  const key = `${(row.State || '').trim()}|${(row.District || '').trim()}|${(row.Institute || '').trim()}`;
+  if (!seen.has(key)) {
+    seen.add(key);
+    uniqueRows.push(row);
+  }
+}
+---
+
+<Layout>
+  <section class="pt-[150px] pb-16 bg-gray-50">
+        
+    <div class="max-w-6xl mx-auto px-4 space-y-8">
+        <h2 class="text-3xl font-semibold text-center text-gray-900">
+        Network Partners
+      </h2>
+      <div class="shadow-lg rounded-2xl border border-gray-200 overflow-hidden">
+
+        <!-- Desktop Table Header -->
+        <div class="hidden md:grid md:grid-cols-3 bg-blue-600 text-white uppercase text-xs font-semibold">
+          <div class="p-3">State</div>
+          <div class="p-3">District</div>
+          <div class="p-3">Institute</div>
+        </div>
+
+        <!-- Table Rows -->
+        {uniqueRows.map((row, index) => (
+          <div
+            class={`border-b border-gray-200 ${
+              index % 2 === 0 ? "bg-white" : "bg-gray-50"
+            } hover:bg-blue-50 transition`}
+            key={index}
+          >
+
+            <!-- Desktop Layout -->
+            <div class="hidden md:grid md:grid-cols-3 text-sm">
+              <div class="p-3">{row.State}</div>
+              <div class="p-3">{row.District}</div>
+              <div class="p-3">{row.Institute}</div>
+            </div>
+
+            <!-- Mobile Card Layout -->
+            <div class="md:hidden p-4 space-y-2 text-sm bg-white">
+              <div><span class="font-medium text-gray-800">State:</span> {row.State}</div>
+              <div><span class="font-medium text-gray-800">District:</span> {row.District}</div>
+              <div><span class="font-medium text-gray-800">Institute:</span> {row.Institute}</div>
+            </div>
+
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </section>
+</Layout>

@@ -6,22 +6,27 @@ import { featureLists } from '@data/features';
 import RecentPosts from '@components/sections/RecentPosts.astro';
 import heroImage from '../assets/images/home/default-hero-2.jpg';
 
-const seoTitle = "MINErVA Network India | MINErVA: Mortality in India Established Through Verbal Autopises";
-const seoDescription = "MINErVA Network India | MINErVA: Mortality in India Established Through Verbal Autopises.";
+const seoTitle = "MINErVA Network India | Mortality in India Through Verbal Autopsies";
+const seoDescription = "MINErVA Network India strengthens cause-of-death ascertainment using standardized verbal autopsies to improve mortality data and public health insights across India.";
 
 const heroContent = {
     title: 'Mortality in India established through verbal autopsies (MINErVA)',
-    description: 'We provide technical assistance to RGI Office in conduct of the Verbal Autopsy based Cause of Death Ascertainment under the Sample Registration System.',
+    description: '',
     buttons: [
         {
             text: 'Join as a VA Coder',
             link: 'https://causeofdeathindia.com/join-us-as-va-coder/',
             target: '_blank'
         },
+        {
+            text: 'Login',
+            link: 'https://causeofdeathindia.com/login/',
+            target: '_blank'
+        },
         
     ],
     backgroundImage: heroImage,
-    overlayOpacity: 0.2
+    overlayOpacity: 0
 }
 
 const featuresSection = {
@@ -29,18 +34,6 @@ const featuresSection = {
     description: "Every life matters, and every death tells a story. Cause of Death India platform is a collaborative approach to strengthen the cause of death ascertainment system through verbal autopsies in India. It is developed by the MINErVA network.",
     features: featureLists.main.features,
     
-}
-
-const FooterCta = {
-    eyebrow: "Join The Community",
-    title: ' Start Building With Titan Core Today',
-    description: 'Titan Core is open-source and constantly improving. Join our community of developers to contribute, get support, or showcase what you\'ve built.',
-    hideCta: false,
-    button: {
-        text: 'Download Titan Core',
-        link: 'https://github.com/rspisarski/titan-core',
-        target: '_blank'
-    }
 }
 
 
@@ -56,10 +49,8 @@ const recentPostsSection = {
 }
 ---
 
-<Layout footerCta={FooterCta} title={seoTitle} description={seoDescription}>
-    <Hero content={heroContent} />
-    <Features content={featuresSection} padding="base" background="light" />
-    <RecentPosts content={recentPostsSection} background="base" padding="base" postsToShow={3} category="Theme Usage"/>
-   
-    
+<Layout title={seoTitle} description={seoDescription}>
+<Hero content={heroContent} />
+<Features content={featuresSection} padding="small" background="light" />
+<RecentPosts content={recentPostsSection} background="base" padding="small" postsToShow={3} />
 </Layout>

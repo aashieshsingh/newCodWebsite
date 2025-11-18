@@ -1,0 +1,33 @@
+---
+import Layout from "@layouts/Layout.astro"
+import InnerHero from "@components/sections/InnerHero.astro"
+
+const heroContent = {
+    title: "Tools",
+    description: ""
+}
+
+---
+
+<Layout>
+ <InnerHero content={heroContent} />
+ <!-- Breadcrumb -->
+  <nav class="bg-gray-100 border-b border-gray-300">
+    <div class="max-w-5xl mx-auto px-4 py-2 text-sm text-gray-600">
+      <a href="/" class="text-blue-700 hover:underline">Home</a> &gt; 
+      <span>Tools</span>
+    </div>
+  </nav>
+ <section class="py-16 bg-gray-50">
+  <div class="max-w-5xl mx-auto px-6 md:px-10">
+    <div class="space-y-12 text-gray-800 leading-relaxed">
+      
+      <ol class="list-decimal pl-6 space-y-4 text-gray-700">
+        <li>Verbal Autopsy tools</li>
+        <li>App based data collection</li>
+      </ol>
+    </div>
+  </div>
+</section>
+</Layout>
+

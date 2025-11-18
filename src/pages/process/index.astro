@@ -1,0 +1,108 @@
+---
+import Layout from "@layouts/Layout.astro"
+import InnerHero from "@components/sections/InnerHero.astro"
+
+const heroContent = {
+    title: "Process",
+    description: ""
+}
+
+---
+
+<Layout>
+ <InnerHero content={heroContent} />
+ <!-- Breadcrumb -->
+  <nav class="bg-gray-100 border-b border-gray-300">
+    <div class="max-w-5xl mx-auto px-4 py-2 text-sm text-gray-600">
+      <a href="/" class="text-blue-700 hover:underline">Home</a> &gt; 
+      <span>Process</span>
+    </div>
+  </nav>
+ <section class="max-w-5xl mx-auto px-4 py-16">
+    <h1 class="text-4xl font-bold mb-10 text-center">How We Work</h1>
+
+    <!-- COMPONENTS OF SYSTEM -->
+    <h2 class="text-2xl font-semibold mb-4">Components of the System</h2>
+
+    <!-- 1. Verbal Autopsy Coding -->
+    <div class="mb-12">
+      <h3 class="text-xl font-semibold mb-2">
+        1. Verbal Autopsy (VA) Coding
+      </h3>
+      <p class="text-gray-700 mb-6">
+        Determining probable causes of death through structured interviews of a
+        sample population.
+      </p>
+
+      <h4 class="text-lg font-semibold text-center mb-4">
+        Flow of Activities in Conducting Verbal Autopsy
+      </h4>
+      <img 
+            src="/images/flow.png" 
+            alt="Flow" 
+           class="rounded-lg mb-4 mx-auto max-w-lg w-full object-contain"  
+          />
+      
+    </div>
+
+    <!-- 2. Coding Platform -->
+    <div class="mb-12">
+      <h3 class="text-xl font-semibold mb-2">2. Coding Platform</h3>
+      <p class="text-gray-700 mb-4">
+        Provides an interface for physicians to review verbal autopsy forms and 
+        assign appropriate codes for causes of death.
+      </p>
+
+
+    </div>
+
+    <!-- 3. Capacity Building -->
+    <div class="mb-12">
+      <h3 class="text-xl font-semibold mb-2">3. Capacity Building</h3>
+      <p class="text-gray-700">
+        Training of physicians and supervisors to ensure high-quality coding and validation.
+      </p>
+    </div>
+  </section>
+ <section class="py-12 px-6 md:px-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">
+        Training and Certification Process
+      </h1>
+
+      <p class="text-gray-700 mb-6">
+        If you are interested in joining us as a <strong>VA Coder</strong>, there are a few steps that must be fulfilled:
+      </p>
+
+      <ol class="list-decimal pl-6 space-y-4 text-gray-700">
+        <li>
+          Complete and submit this <a 
+            href="https://causeofdeathindia.com/join-us-as-va-coder/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="text-blue-600 hover:underline font-medium"
+          >form</a> to express your interest in joining as a VA Coder.
+        </li>
+        <li>
+          Our team will examine your request. If found suitable, we will approve your request. You will then be provided a <strong>Login</strong> and <strong>Password</strong> for our online certification system.
+        </li>
+        <li>
+          Log on to this website. (The logon button is visible on all pages at the bottom.)
+        </li>
+        <li>
+          Go to the <strong>Online Training</strong> page. Select the training course 
+          <em>(Course name will only be visible if you have logged in and are enrolled in the course)</em>.
+          Read the provided training module. You can also download it without registering from this page.
+        </li>
+        <li>
+          Complete the three tests.
+        </li>
+        <li>
+          Upon successful completion of the tests, we will certify you as a <strong>VA Coder</strong> 
+          and register you into our coding platform.
+        </li>
+      </ol>
+    </div>
+  </section>
+</Layout>
+

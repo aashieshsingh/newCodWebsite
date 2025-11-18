@@ -1,0 +1,67 @@
+---
+import Layout from "@layouts/Layout.astro";
+import InnerHero from "@components/sections/InnerHero.astro";
+
+const heroContent = {
+    title: "Disclaimer",
+    description: "Official disclaimer, copyright, privacy & hyperlink policy for Cause of Death India."
+}
+---
+<Layout>
+  <InnerHero content={heroContent} />
+
+  <!-- Breadcrumb -->
+  <nav class="bg-gray-100 border-b border-gray-300">
+    <div class="max-w-5xl mx-auto px-4 py-2 text-sm text-gray-600">
+      <a href="/" class="text-blue-700 hover:underline">Home</a> &gt; 
+      <span>Disclaimer</span>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <section class="max-w-5xl mx-auto px-4 py-12">
+
+    <h2 class="text-2xl font-bold text-blue-900 mb-3">Terms and Conditions</h2>
+    <hr class="border-gray-300 mb-6"/>
+
+    <p class="text-gray-800 mb-4 leading-relaxed">
+      This Portal is designed and developed by the ATSU team of AIIMS, New Delhi.
+    </p>
+
+    <p class="text-gray-800 mb-4 leading-relaxed">
+      Though all efforts have been made to ensure the accuracy and currency of the content on this Portal, the same should not be construed as a statement of law or used for any legal purposes. ATSU accepts no responsibility in relation to the accuracy, completeness, usefulness or otherwise, of the contents. Users are advised to verify/check any information with the ATSU team, and to obtain any appropriate professional advice before acting on the information provided in the Portal.
+    </p>
+
+    <p class="text-gray-800 mb-4 leading-relaxed">
+      In no event will the ATSU be liable for any expense, loss or damage including, without limitation, indirect or consequential loss or damage, or any expense, loss or damage whatsoever arising from use, or loss of use, of data, arising out of or in connection with the use of this Portal.
+    </p>
+
+    <p class="text-gray-800 mb-10 leading-relaxed">
+      Links to other websites that have been included on this Portal are provided for public convenience only. ATSU is not responsible for the contents or reliability of linked websites and does not necessarily endorse the view expressed within them. We cannot guarantee the availability of such linked pages at all times.
+    </p>
+
+    <p class="text-gray-800 mb-10 leading-relaxed">
+      These terms and conditions shall be governed by and construed in accordance with the Indian Laws. Any dispute arising under these terms and conditions shall be subject to the exclusive jurisdiction of the courts of India.
+    </p>
+
+    <h2 class="text-2xl font-bold text-blue-900 mb-3">Copyright Policy</h2>
+    <hr class="border-gray-300 mb-6"/>
+
+    <p class="text-gray-800 mb-6 leading-relaxed">
+      Material featured on this Portal may be reproduced free of charge after taking proper permission by sending a mail to us. However, the material has to be reproduced accurately and not to be used in a derogatory manner or in a misleading context. Wherever the material is being published or issued to others, the source must be prominently acknowledged. However, the permission to reproduce this material shall not extend to any material which is identified as being copyright of a third party. Authorisation to reproduce such material must be obtained from the departments/copyright holders concerned.
+    </p>
+
+    <h2 class="text-2xl font-bold text-blue-900 mb-3">Hyperlinking Policy</h2>
+    <hr class="border-gray-300 mb-6"/>
+
+    <h3 class="text-xl font-semibold text-blue-800 mb-2">Links to external websites/portals</h3>
+    <p class="text-gray-800 mb-4 leading-relaxed">
+      At many places in this website, you shall find links to other websites/portals. These links have been placed for your convenience. ATSU is not responsible for the contents and reliability of the linked websites and does not necessarily endorse the views expressed in them. Mere presence of the link or its listing on this Portal should not be assumed as endorsement of any kind. We cannot guarantee that these links will work all the time and we have no control over availability of linked pages.
+    </p>
+
+    <h3 class="text-xl font-semibold text-blue-800 mb-2">Links to ATSU website by other websites</h3>
+    <p class="text-gray-800 leading-relaxed">
+      We do not object to you linking directly to the information that is hosted on this Portal and no prior permission is required for the same. However, we would like you to inform us about any links provided to this Portal so that you can be informed of any changes or updations therein. Also, we do not permit our pages to be loaded into frames on your site. The pages belonging to this Portal must load into a newly opened browser window of the User.
+    </p>
+  </section>
+</Layout>

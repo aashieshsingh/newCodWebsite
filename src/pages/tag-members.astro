@@ -1,0 +1,72 @@
+---
+import Layout from "@layouts/Layout.astro";
+
+// TAG Members (Name + Designation only)
+const tagMembers = [
+  { name: "Dr. Rajiv Bahl", designation: "Director General, ICMR" },
+  { name: "Dr. RM Pandey", designation: "Ex-HOD-Biostatistics-AIIMS, A.S.Paintal Distinguished Scientist Chair (Chairperson), ICMR" },
+  { name: "Dr. Anand Krishnan", designation: "Professor, CCM, AIIMS New Delhi" },
+  { name: "Dr. Nikhil Tandon", designation: "Professor, Dept of Endocrinology, AIIMS New Delhi" },
+  { name: "Dr. Rakhi Dandona", designation: "Professor, PHFI" },
+  { name: "Dr. Rajesh Dixit", designation: "Director, Centre for Cancer Epidemiology, Tata Memorial Centre, Mumbai" },
+  { name: "Dr. L. Swasticharan", designation: "Addl. DDG & Director (EMR), MoHFW" },
+  { name: "Mrs. Reena Singh", designation: "Chief Director (Stats), MoHFW (Ex-officio)" },
+  { name: "Dr. Dilip Kumar Das", designation: "Professor, Murshidabad Medical College and Hospital, West Bengal" },
+  { name: "Dr. Sanjay Juvekar", designation: "Professor, KEM Hospital & Research Centre, Pune" },
+  { name: "Mr. Sunil Kumar Patel", designation: "JD, ORGI (Ex-Officio)" },
+  { name: "Dr. Prabhdeep Kaur", designation: "Professor, Isaac Centre for Public Health, IISc Bengaluru" },
+  { name: "Dr. Nandita Saikia", designation: "Professor, IIPS Mumbai (Ex-officio)" },
+  { name: "Dr. Meghachandra Singh", designation: "Professor, Community Medicine, MAMC New Delhi" },
+  { name: "Dr. Rohina Joshi", designation: "Associate Professor, George Institute for Global Health" },
+  { name: "Dr. Biju Soman", designation: "Professor, AMCCHS, SCTIMST, Thiruvananthapuram" },
+  { name: "Dr. Yogesh Kalkonde", designation: "Public Health Practitioner, Executive Committee Member, Sangwari Chandrapur, Maharashtra" },
+  { name: "Dr. Ayon Gupta", designation: "Associate Professor, AFMC Pune" },
+  { name: "Dr. R. Sukanya", designation: "NCDIR-ICMR, Bengaluru" },
+];
+---
+
+<Layout>
+  <section class="pt-[150px] pb-16 bg-gray-50">
+
+    <div class="max-w-6xl mx-auto px-4 space-y-8">
+
+      <h2 class="text-3xl font-semibold text-center text-gray-900">
+        TAG Members
+      </h2>
+
+      <div class="shadow-lg rounded-2xl border border-gray-200 overflow-hidden">
+
+        <!-- Desktop Table Header -->
+        <div class="hidden md:grid md:grid-cols-2 bg-blue-600 text-white uppercase text-xs font-semibold">
+          <div class="p-3">Name</div>
+          <div class="p-3">Designation</div>
+        </div>
+
+        <!-- Table Rows -->
+        {tagMembers.map((m, index) => (
+          <div
+            class={`border-b border-gray-200 ${
+              index % 2 === 0 ? "bg-white" : "bg-gray-50"
+            } hover:bg-blue-50 transition`}
+          >
+
+            <!-- Desktop -->
+            <div class="hidden md:grid md:grid-cols-2 text-sm">
+              <div class="p-3">{m.name}</div>
+              <div class="p-3">{m.designation}</div>
+            </div>
+
+            <!-- Mobile -->
+            <div class="md:hidden p-4 space-y-2 text-sm bg-white">
+              <div><span class="font-medium text-gray-800">Name:</span> {m.name}</div>
+              <div><span class="font-medium text-gray-800">Designation:</span> {m.designation}</div>
+            </div>
+
+          </div>
+        ))}
+
+      </div>
+    </div>
+
+  </section>
+</Layout>

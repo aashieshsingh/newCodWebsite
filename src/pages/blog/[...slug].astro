@@ -7,37 +7,46 @@ import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
     const posts = await getCollection('blog');
-    return posts.map((post) => ({
-        params: { slug: post.id },
-        props: { post },
-    }));
+
+    // Sort posts newest → oldest
+    const sortedPosts = posts
+        .filter((post) => import.meta.env.DEV || post.data.publish !== false)
+        .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+
+    return sortedPosts.map((post, index) => {
+        const prevPost = sortedPosts[index - 1];
+        const nextPost = sortedPosts[index + 1];
+
+        return {
+            params: { slug: post.id },
+            props: { 
+                post,
+                prevPost: prevPost || null,
+                nextPost: nextPost || null
+            },
+        };
+    });
 }
 
-const { post } = Astro.props;
+const { post, prevPost, nextPost } = Astro.props;
 const { Content } = await render(post);
 
-// Use SEO data from frontmatter if available, fallback to regular post data
+// SEO values
 const seoTitle = post.data.seo?.title || post.data.title;
 const seoDescription = post.data.seo?.description || post.data.excerpt;
-
-// For SEO image, use the seo.image if provided, otherwise use the featured image
-// The Layout component expects a string for the image, so we need to handle that
 let seoImage: string | undefined = post.data.seo?.image;
 
-// If seoImage is provided but not an absolute URL, make it absolute
 if (seoImage && !seoImage.startsWith('http')) {
     const siteUrl = import.meta.env.SITE || 'https://titan-core.vercel.app';
     seoImage = new URL(seoImage.startsWith('/') ? seoImage : `/${seoImage}`, siteUrl).toString();
-}
-// If no SEO image is specified, but we have a featured image, use its URL
-else if (!seoImage && post.data.featuredImage) {
-    // For Astro image objects, we need to create an absolute URL
+} else if (!seoImage && post.data.featuredImage) {
     const siteUrl = import.meta.env.SITE || 'https://titan-core.vercel.app';
     seoImage = new URL(post.data.featuredImage.src, siteUrl).toString();
 }
 ---
 
 <Layout title={seoTitle} description={seoDescription} image={seoImage}>
+    <!-- HERO SECTION -->
     <div class="w-full h-120 absolute top-0 left-0 z-0 overflow-hidden border-b border-black">
         {
             post.data.featuredImage && (
@@ -50,7 +59,7 @@ else if (!seoImage && post.data.featuredImage) {
                         class="w-full h-full object-cover grayscale opacity-20"
                         quality={60}
                     />
-                    <div class="absolute inset-0 bg-primary/10 backdrop-blur-md" />
+                    <div class="absolute inset-0 bg-primary/10 backdrop-md" />
                 </>
             )
         }
@@ -61,34 +70,122 @@ else if (!seoImage && post.data.featuredImage) {
             <h1>{post.data.title}</h1>
             <div class="flex items-center justify-center gap-4 text-gray-600">
                 <Date date={post.data.publishDate} />
-                {
-                    post.data.categories && (
-                        <div class="flex flex-wrap gap-2">
-                            {post.data.categories.map((category) => (
-                                <CategoryPill category={category} />
-                            ))}
-                        </div>
-                    )
-                }
+                {post.data.categories && (
+                    <div class="flex flex-wrap gap-2">
+                        {post.data.categories.map((category) => (
+                            <CategoryPill category={category} />
+                        ))}
+                    </div>
+                )}
             </div>
         </div>
 
-        {
-            post.data.featuredImage && (
-                <Image
-                    src={post.data.featuredImage}
-                    alt=""
-                    width={1200}
-                    height={675}
-                    class="w-full h-auto rounded-lg border mb-12 border-black"
-                    quality={80}
-                    format="webp"
-                />
-            )
-        }
+        {post.data.featuredImage && (
+            <Image
+                src={post.data.featuredImage}
+                alt=""
+                width={1200}
+                height={675}
+                class="w-full h-auto rounded-lg border mb-12 border-black"
+                quality={80}
+                format="webp"
+            />
+        )}
 
+        <!-- BLOG CONTENT -->
         <div class="mt-8">
             <Content />
+
+            <!-- ✅ GALLERY SECTION -->
+            {post.data.gallery && post.data.gallery.length > 0 && (
+                <section class="mt-12">
+                    <h2 class="text-2xl font-bold mb-6">Gallery</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {post.data.gallery.map((img) => (
+                            <a 
+                                href={img.src} 
+                                class="glightbox group block relative overflow-hidden rounded-lg border border-gray-300"
+                                data-gallery="blog-gallery"
+                                data-title={img.title}
+                            >
+                                <img
+                                    src={img.src}
+                                    alt={img.title || "Gallery image"}
+                                    class="object-cover w-full h-56 transition-transform duration-300 group-hover:scale-105"
+                                />
+                                {img.title && (
+                                    <span class="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-sm p-2 text-center">
+                                        {img.title}
+                                    </span>
+                                )}
+                            </a>
+                        ))}
+                    </div>
+                </section>
+            )}
+
+            <!-- ✅ YEAR-WISE ACTIVITIES ACCORDION -->
+            {post.data.activities && (
+                <section class="mt-14">
+                    <h2 class="text-2xl font-bold mb-6">Year-wise Activities</h2>
+                    <div class="space-y-4">
+                        {post.data.activities.map((act, i) => (
+                            <details class="bg-gray-50 border rounded-lg p-4" open={i === 0}>
+                                <summary class="cursor-pointer flex justify-between items-center font-semibold text-lg">
+                                    <span>{act.year}</span>
+                                    <span class="accordion-icon transition-transform duration-300">▼</span>
+                                </summary>
+                                <ul class="list-disc ml-6 mt-3 space-y-2 text-gray-700">
+                                    {act.items.map((item) => (
+                                        <li>{item}</li>
+                                    ))}
+                                </ul>
+                            </details>
+                        ))}
+                    </div>
+                </section>
+            )}
         </div>
+
+        <!-- ✅ PREV / NEXT POST NAVIGATION -->
+        {(prevPost || nextPost) && (
+            <nav class="mt-16 flex justify-between items-center border-t pt-8">
+                {prevPost ? (
+                    <a href={`/blog/${prevPost.id}`} class="text-left group">
+                        <p class="text-sm text-gray-500">← Previous Post</p>
+                        <p class="text-lg font-semibold group-hover:text-primary transition">{prevPost.data.title}</p>
+                    </a>
+                ) : <div></div>}
+
+                {nextPost && (
+                    <a href={`/blog/${nextPost.id}`} class="text-right group">
+                        <p class="text-sm text-gray-500">Next Post →</p>
+                        <p class="text-lg font-semibold group-hover:text-primary transition">{nextPost.data.title}</p>
+                    </a>
+                )}
+            </nav>
+        )}
     </article>
 </Layout>
+
+<!-- ✅ SCRIPTS -->
+<script>
+  import GLightbox from "glightbox";
+
+  if (typeof window !== "undefined") {
+    GLightbox({
+      selector: ".glightbox",
+      touchNavigation: true,
+      loop: true,
+      zoomable: true,
+      closeButton: true,
+    });
+  }
+
+  document.querySelectorAll("details").forEach((d) => {
+    d.addEventListener("toggle", () => {
+      const icon = d.querySelector(".accordion-icon");
+      if (icon) icon.style.transform = d.open ? "rotate(0deg)" : "rotate(-90deg)";
+    });
+  });
+</script>

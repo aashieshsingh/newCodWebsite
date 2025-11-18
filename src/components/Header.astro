@@ -20,8 +20,15 @@ const isCurrentPage = (link: string) => {
     return currentPath.startsWith(link);
 };
 ---
+<!-- Top Accessibility Bar -->
+<div class="w-full bg-gray-100 border-b border-gray-300 text-[14px] py-1 px-4 fixed top-0 left-0 z-50 flex justify-end gap-3 items-center">
+  <span class="font-medium text-gray-700">Accessibility:</span>
+  <button id="acc-decrease" class="px-2 text-sm hover:underline">A-</button>
+  <button id="acc-reset" class="px-2 text-sm hover:underline">A</button>
+  <button id="acc-increase" class="px-2 text-sm hover:underline">A+</button>
+</div>
 
-<header class="fixed top-0 z-50 w-full left-0">
+<header class="fixed top-[30px] z-50 w-full left-0">
     <div class="site-container mx-auto px-4 mt-4">
         <div class="flex justify-between items-center bg-white py-4 rounded-lg px-4 border-black border">
             <Logo />
@@ -34,6 +41,8 @@ const isCurrentPage = (link: string) => {
                                 <div class="flex items-center gap-1">
                                     <a
                                         href={item.link}
+                                        target={item.target || "_self"}
+                                        rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
                                         class:list={[
                                             'text-small font-medium rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-nav-text-active',
                                             isCurrentPage(item.link)
@@ -71,6 +80,8 @@ const isCurrentPage = (link: string) => {
                                             <li>
                                                 <a
                                                     href={child.link}
+                                                    target={child.target || "_self"}
+                                                    rel={child.target === "_blank" ? "noopener noreferrer" : undefined}
                                                     class:list={[
                                                         'block px-4 text-small py-2 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-nav-text-active',
                                                         isCurrentPage(child.link)
@@ -89,7 +100,7 @@ const isCurrentPage = (link: string) => {
                         ))
                     }
                 </ul>
-
+                
                 <Button href={ctaButton.link} variant="primary">{ctaButton.name}</Button>
 
                 {/* Mobile Menu Button */}
@@ -118,6 +129,8 @@ const isCurrentPage = (link: string) => {
                                         <div class="flex items-center justify-between">
                                             <a
                                                 href={item.link}
+                                                target={item.target || "_self"}
+                                                rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
                                                 class:list={[
                                                     'py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-nav-mobile-text-active',
                                                     isCurrentPage(item.link)
@@ -152,6 +165,8 @@ const isCurrentPage = (link: string) => {
                                                     <li role="none">
                                                         <a
                                                             href={child.link}
+                                                            target={child.target || "_self"}
+                                                            rel={child.target === "_blank" ? "noopener noreferrer" : undefined}
                                                             class:list={[
                                                                 'block py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-nav-mobile-text-active',
                                                                 isCurrentPage(child.link)
@@ -196,20 +211,18 @@ const isCurrentPage = (link: string) => {
         const submenuLinks = submenu?.querySelectorAll('a');
 
         if (submenu && link && button) {
-            // Handle hover
             item.addEventListener('mouseenter', () => {
-                showSubmenu(submenu as HTMLElement, button as HTMLElement);
+                showSubmenu(submenu, button);
             });
 
             item.addEventListener('mouseleave', () => {
-                hideSubmenu(submenu as HTMLElement, button as HTMLElement);
+                hideSubmenu(submenu, button);
             });
 
-            // Handle keyboard navigation
             link.addEventListener('keydown', (e) => {
                 if (e.key === 'ArrowDown' && item.children) {
                     e.preventDefault();
-                    showSubmenu(submenu as HTMLElement, button as HTMLElement);
+                    showSubmenu(submenu, button);
                     submenuLinks?.[0]?.focus();
                 }
             });
@@ -219,9 +232,9 @@ const isCurrentPage = (link: string) => {
                     e.preventDefault();
                     const isExpanded = button.getAttribute('aria-expanded') === 'true';
                     if (isExpanded) {
-                        hideSubmenu(submenu as HTMLElement, button as HTMLElement);
+                        hideSubmenu(submenu, button);
                     } else {
-                        showSubmenu(submenu as HTMLElement, button as HTMLElement);
+                        showSubmenu(submenu, button);
                         submenuLinks?.[0]?.focus();
                     }
                 }
@@ -230,17 +243,15 @@ const isCurrentPage = (link: string) => {
             button.addEventListener('keydown', (e) => {
                 if (e.key === 'ArrowDown' && item.children) {
                     e.preventDefault();
-                    showSubmenu(submenu as HTMLElement, button as HTMLElement);
+                    showSubmenu(submenu, button);
                     submenuLinks?.[0]?.focus();
                 }
             });
 
-            // Don't show submenu on focus, only on hover or arrow key
             link.addEventListener('focus', () => {
-                hideSubmenu(submenu as HTMLElement, button as HTMLElement);
+                hideSubmenu(submenu, button);
             });
 
-            // Keyboard navigation within submenu
             submenuLinks?.forEach((submenuLink, index) => {
                 submenuLink.addEventListener('keydown', (e) => {
                     const lastIndex = submenuLinks.length - 1;
@@ -258,51 +269,46 @@ const isCurrentPage = (link: string) => {
                                 submenuLinks[index - 1].focus();
                             } else {
                                 link.focus();
-                                hideSubmenu(submenu as HTMLElement, button as HTMLElement);
+                                hideSubmenu(submenu, button);
                             }
                             break;
                         case 'Escape':
                             e.preventDefault();
-                            hideSubmenu(submenu as HTMLElement, button as HTMLElement);
+                            hideSubmenu(submenu, button);
                             link.focus();
                             break;
                         case 'Tab':
-                            // Allow normal tab behavior but close submenu
-                            hideSubmenu(submenu as HTMLElement, button as HTMLElement);
+                            hideSubmenu(submenu, button);
                             break;
                     }
                 });
             });
 
-            // Close submenu when focus leaves
             document.addEventListener('focusin', (e) => {
-                if (item && !item.contains(e.target as Node)) {
-                    hideSubmenu(submenu as HTMLElement, button as HTMLElement);
+                if (item && !item.contains(e.target)) {
+                    hideSubmenu(submenu, button);
                 }
             });
         }
     });
 
-    // Helper functions
-    function showSubmenu(submenu: HTMLElement, button: HTMLElement) {
+    function showSubmenu(submenu, button) {
         submenu.classList.remove('invisible', 'opacity-0');
         submenu.classList.add('visible', 'opacity-100');
         button.setAttribute('aria-expanded', 'true');
     }
 
-    function hideSubmenu(submenu: HTMLElement, button: HTMLElement) {
+    function hideSubmenu(submenu, button) {
         submenu.classList.add('invisible', 'opacity-0');
         submenu.classList.remove('visible', 'opacity-100');
         button.setAttribute('aria-expanded', 'false');
     }
 
-    // Simple mobile submenu toggle
     document.querySelectorAll('.mobile-submenu-button').forEach((button) => {
         button.addEventListener('click', () => {
-            const submenu = button.parentElement?.nextElementSibling as HTMLElement;
+            const submenu = button.parentElement?.nextElementSibling;
             const chevron = button.querySelector('svg');
 
-            // Toggle submenu
             if (submenu) {
                 submenu.classList.toggle('hidden');
                 chevron?.classList.toggle('rotate-180');
@@ -312,7 +318,6 @@ const isCurrentPage = (link: string) => {
         });
     });
 
-    // Mobile menu toggle with scroll lock
     const mobileMenuButton = document.querySelector('.mobile-menu-button');
     const mobileMenu = document.querySelector('.mobile-menu');
     const menuIcon = document.querySelector('.menu-icon');
@@ -325,7 +330,7 @@ const isCurrentPage = (link: string) => {
             document.body.style.overflow = 'hidden';
             mobileMenu?.classList.remove('hidden');
             requestAnimationFrame(() => {
-                mobileMenu?.classList.remove('opacity-0', 'scale-95');
+                mobileMenu?.classList.remove('opacity-0', 'scale-95'); 
                 mobileMenu?.classList.add('opacity-100', 'scale-100');
             });
             menuIcon?.classList.add('hidden');
@@ -340,5 +345,35 @@ const isCurrentPage = (link: string) => {
             menuIcon?.classList.remove('hidden');
             closeIcon?.classList.add('hidden');
         }
+    });
+
+// =====================
+    // Text Resize Feature
+    // =====================
+
+    function setTextSize(size) {
+      document.documentElement.style.fontSize = size + "px";
+      localStorage.setItem("textSize", size);
+    }
+
+    function getCurrentSize() {
+      return parseInt(getComputedStyle(document.documentElement).fontSize);
+    }
+
+    const savedSize = localStorage.getItem("textSize");
+    if (savedSize) setTextSize(parseInt(savedSize));
+
+    document.getElementById("acc-increase")?.addEventListener("click", () => {
+      const size = getCurrentSize();
+      if (size < 24) setTextSize(size + 1);
+    });
+
+    document.getElementById("acc-decrease")?.addEventListener("click", () => {
+      const size = getCurrentSize();
+      if (size > 12) setTextSize(size - 1);
+    });
+
+    document.getElementById("acc-reset")?.addEventListener("click", () => {
+      setTextSize(16);
     });
 </script>

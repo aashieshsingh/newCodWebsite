@@ -1,0 +1,108 @@
+---
+import Layout from "@layouts/Layout.astro";
+import InnerHero from "@components/sections/InnerHero.astro";
+
+const heroContent = {
+  title: "Data and Insights",
+  description: ""
+};
+
+const reports = [
+  {
+    title: "Causes of Death Statistics 2014–2016",
+    img: "/images/cod-2014-16.png",
+    pdf: "https://censusindia.gov.in/nada/index.php/catalog/42518/download/46144/SRS_COD-STATISTICS_2014-2016.pdf"
+  },
+  {
+    title: "Causes of Death Statistics 2015–2017",
+    img: "/images/cod-2015-17.png",
+    pdf: "https://censusindia.gov.in/nada/index.php/catalog/44835/download/48549/SRS_COD-STATISTICS_2015-2017.pdf"
+  },
+  {
+    title: "Causes of Death Statistics 2016–2018",
+    img: "/images/cod-2016-18.png",
+    pdf: "https://censusindia.gov.in/nada/index.php/catalog/44232/download/47887/SRS_COD-STATISTICS_2016-2018.pdf"
+  },
+  {
+    title: "Causes of Death Statistics 2017–2019",
+    img: "/images/cod-2017-19.png",
+    pdf: "https://censusindia.gov.in/nada/index.php/catalog/44752/download/48425/SRS_COD-STATISTICS_2017-2019.pdf"
+  },
+  {
+    title: "Causes of Death Statistics 2018–2020",
+    img: "/images/cod-2018-20.png",
+    pdf: "https://censusindia.gov.in/nada/index.php/catalog/45559/download/49756/SRS_COD-STATISTICS_2018-2020.pdf"
+  },
+  {
+    title: "Causes of Death Statistics 2019–2021",
+    img: "/images/cod-2019-21.png",
+    pdf: "https://censusindia.gov.in/nada/index.php/catalog/45560/download/49757/SRS_COD-STATISTICS_2019-2021.pdf"
+  },
+  {
+    title: "Causes of Death Statistics 2020–2022",
+    img: "/images/cod-2020-22.png",
+    pdf: "https://censusindia.gov.in/nada/index.php/catalog/45568/download/49765/SRS_COD-STATISTICS_2020-2022.pdf"
+  },
+  {
+    title: "Causes of Death Statistics 2021–2023",
+    img: "/images/cod-2021-23.png",
+    pdf: "https://censusindia.gov.in/nada/index.php/catalog/46176/download/50424/SRS_COD-STATISTICS_2021-2023.pdf"
+  },
+];
+---
+
+<Layout>
+  <InnerHero content={heroContent} />
+<!-- Breadcrumb -->
+  <nav class="bg-gray-100 border-b border-gray-300">
+    <div class="max-w-5xl mx-auto px-4 py-2 text-sm text-gray-600">
+      <a href="/" class="text-blue-700 hover:underline">Home</a> &gt; 
+      <span>Data & Insights</span>
+    </div>
+  </nav>
+  <section class="py-12">
+    <div class="max-w-7xl mx-auto px-4">
+
+      <h2 class="text-3xl font-bold text-center mb-6">
+        Annual Cause of Death Reports
+      </h2>
+
+      <p class="text-center text-lg mb-10">
+        Official reports published by Census India.  
+        <a 
+          href="https://censusindia.gov.in/census.website/data/SRSCOD" 
+          class="text-blue-600 underline hover:text-blue-800 transition"
+          target="_blank"
+          rel="noopener"
+        >
+          View All Reports
+        </a>
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {reports.map((r) => (
+          <div class="border rounded-lg shadow-sm p-3 bg-white hover:shadow-lg hover:-translate-y-1 transition">
+
+            <img src={r.img} alt={r.title} class="rounded-md w-full" />
+
+            <h3 class="text-center mt-3 text-sm font-medium">
+              {r.title}
+            </h3>
+
+            <div class="mt-4 flex items-center justify-center">
+              <a
+                href={r.pdf}
+                download
+                class="inline-block px-4 py-2 text-sm font-medium bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+              >
+                Download PDF
+              </a>
+            </div>
+
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+</Layout>

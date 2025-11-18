@@ -1,7 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro"
 import InnerHero from "@components/sections/InnerHero.astro"
-import TechSpecs from "./TechSpecs.astro"
+
 const heroContent = {
     title: "About us",
     description: ""
@@ -11,6 +11,109 @@ const heroContent = {
 
 <Layout>
  <InnerHero content={heroContent} />
- <TechSpecs />
+ <!-- Breadcrumb -->
+  <nav class="bg-gray-100 border-b border-gray-300">
+    <div class="max-w-5xl mx-auto px-4 py-2 text-sm text-gray-600">
+      <a href="/" class="text-blue-700 hover:underline">Home</a> &gt; 
+      <span>About us</span>
+    </div>
+  </nav>
+ <section class="py-16 bg-gray-50">
+  <div class="max-w-5xl mx-auto px-6 md:px-10">
+    <div class="space-y-12 text-gray-800 leading-relaxed">
+
+      <!-- About Section -->  
+      <div class="space-y-4">
+        <h3 class="text-2xl font-semibold text-gray-900 border-b pb-2 text-center mx-auto">
+        Overview
+        </h3>
+        <p>
+          The MINErVA network has four components – AIIMS Technical Support Unit (ATSU), Network Partners and Physician reviewers and Technical Advisory Group (TAG), and three platforms – training, quality control and coding). The ATSU liaises with the ORGI and network partner medical colleges, manages administrative and financial issues, develops training programs, conducts training of trainers and, most importantly, deliberates on all technical matters internally before it is taken to partners and TAG. It also meets with the ORGI team to review the activities and their progress. The co-location of the ATSU team within the ORGI premises allows closer coordination and understanding of process flows.
+        </p>
+        <img 
+            src="/images/about_minerva.png" 
+            alt="Minerva" 
+            class="rounded-lg mb-4 mx-auto max-w-md w-full object-contain"
+          />
+      </div>
+
+      <!-- Faculty Section -->
+      <div class="space-y-4">
+        <h3 class="text-2xl font-semibold text-gray-900  pb-2 text-center mx-auto">
+  MINErVA
+    </h3>
+        <img 
+            src="/images/network_institution.png" 
+            alt="Minerva" 
+           class="rounded-lg mb-4 mx-auto max-w-lg w-full object-contain"  
+          />
+           <h3 class="text-2xl font-semibold text-gray-900 pb-2 text-center mx-auto">
+    Network Institutions        
+    </h3>
+      </div>
+      <!-- Objectives Section -->
+<div class="space-y-4 mt-12">
+  <h3 class="text-2xl font-semibold text-gray-900 border-b pb-2 text-center">
+    Objectives
+  </h3>
+
+  <ul class="list-disc list-inside space-y-2 text-gray-800 leading-relaxed">
+    <li>Training of coders to ascertain cause of death through Verbal Autopsy</li>
+    <li>Coding of Verbal Autopsy forms collected by SRS</li>
+    <li>Provide cause of death data for national reports</li>
+  </ul>
+</div>
+
+<!-- Partners Section -->
+<div class="space-y-4 mt-12">
+  <h3 class="text-2xl font-semibold text-gray-900 border-b pb-2 text-center">
+    Partners
+  </h3>
+
+  <ul class="list-disc list-inside space-y-2 text-gray-800 leading-relaxed">
+    <li>
+      Office of the Registrar General, India
+    </li>
+
+    <li>
+  <a 
+    href="/network-partners" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    class="text-blue-600 hover:underline font-medium"
+  >
+    Network Partners
+  </a>
+</li>
+
+<li>
+  <a 
+    href="/tag-members" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    class="text-blue-600 hover:underline font-medium"
+  >
+    TAG
+  </a>
+</li>
+
+<li>
+  <a 
+    href="/atsu-members" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    class="text-blue-600 hover:underline font-medium"
+  >
+    ATSU
+  </a>
+</li>
+
+  </ul>
+</div>
+
+    </div>
+  </div>
+</section>
+ 
 </Layout>
 

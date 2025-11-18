@@ -1,31 +1,35 @@
 // src/data/menu.ts
 
 export const headerMenu = [
+    { name: 'Home', link: '/' },
     { name: 'About', link: '/about' },
-    { name: 'Our Team', link: '/team' },
-    { name: 'Registration', link: '/registration' , showArrow: false,
-             children: [
-            { name: 'Process', link: '/process' },
-            { name: 'Join us as VA coder', link: 'https://causeofdeathindia.com/join-us-as-va-coder/' },
-             ]   
-     },
-    { name: 'Tools & Innovations', link: '/tools' },
+    { name: 'Team', link: '/team' },
+    { name: 'Register', link: 'https://causeofdeathindia.com/join-us-as-va-coder/', target: '_blank'},
+    { name: 'Process', link: '/process' },
+    { name: 'Gallery', link: '/gallery' },
     { name: 'Data & Insights', link: '/insights' },
     { name: 'Capacity Building', link: '/capacity' },
-    { name: 'Resources', link: '/resources', showArrow: false,
+    { name: 'Resources', link: '#', showArrow: false,
         children: [
-            { name: 'Guidelines and Policy Documents', link: '/style-guide#typography' },
-            { name: 'Research Papers', link: '/style-guide#colors' },
+            { name: 'Guidelines & Policy Documents', link: '/guidelines' },
+            { name: 'Research Papers', link: '/researchpapers' },
+            { name: 'Videos', link: '/videos' },
+            { name: 'Tools ', link: '/tools' },
         ]
     }
 ];
 
 export const footerMenu = [
-    { name: 'Style Guide', link: '/style-guide' },
+    { name: 'Contact Us', link: '/contact' },
+    
 ];
 
 export const legalMenu = [
-    { name: 'Privacy Policy', link: '/legal/privacy-policy' },
-    { name: 'Terms of Service', link: '/legal/terms-of-service' }
+    { name: 'Copyright', link: '/copyright' },
+    { name: 'Disclaimer', link: '/disclaimer' },
+    { name: 'Privacy Policy', link: '/privacy-policy' },
+    { name: 'Sitemap', link: '/sitemap' },
+    
+
 ];
 
