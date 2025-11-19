@@ -4,7 +4,7 @@ excerpt: "Technical Advisory Group Meeting of MINErVA Network"
 featuredImage: "./images/tag.jpg"
 publishDate: "2024-12-21"
 publish: true 
-categories: ["News","Training"]
+categories: ["News","Meeting"]
 
 seo:
   title: "7th Minerva TAG Meeting"

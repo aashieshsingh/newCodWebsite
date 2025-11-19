@@ -133,77 +133,228 @@ html {
         --color-footer-logo: var(--color-primary);
     }
 
-    [data-theme='apollo'] {
-        --color-primary: #cc7000;
-        --color-primary-light: #e68a00;
-        --color-primary-dark: #995400;
-        --color-secondary: #cc6600;
-        --color-secondary-light: #ff8c1a;
-        --color-secondary-dark: #994d00;
-        --color-accent: #cc3600;
-        --color-background: #fff8f0;
-        --color-background-light: #fff0e0;
-        --color-background-dark: #332200;
-        --color-headline: #332200;
-        --color-headline-light: #332200;
-        --color-headline-dark: #ffffff;
-        --color-body-base: #332200;
-        --color-body-light: #332200;
-        --color-body-dark: #ffffff;
-        --color-eyebrow: #cc3600;
-        --color-eyebrow-light: #cc3600;
-        --color-eyebrow-dark: #cc3600;
-        --color-input: var(--color-background-light);
-        --color-input-light: var(--color-background-light);
-        --color-input-dark: var(--color-background-dark);
-        --color-input-text: var(--color-body-base);
-        --color-input-text-light: var(--color-headline-light);
-        --color-input-text-dark: var(--color-headline-dark);
-        --color-nav-text: var(--color-body-base);
-        --color-nav-text-hover: var(--color-primary);
-        --color-nav-text-active: var(--color-primary);
-        --color-nav-text-current: var(--color-primary);
-        --color-nav-submenu-bg: var(--color-background-light);
-        --color-header-logo: var(--color-primary);
-        --color-footer-logo: var(--color-primary);
-    }
 
-    [data-theme='artemis'] {
-        --color-primary: #999999;
-        --color-primary-light: #b3b3b3;
-        --color-primary-dark: #808080;
-        --color-secondary: #1a663d;
-        --color-secondary-light: #248f54;
-        --color-secondary-dark: #004d2b;
-        --color-accent: #248f54;
-        --color-background: #f5f5f5;
-        --color-background-light: #ffffff;
-        --color-background-dark: #333333;
-        --color-headline: #333333;
-        --color-headline-light: #333333;
-        --color-headline-dark: #ffffff;
-        --color-body-base: #333333;
-        --color-body-light: #333333;
-        --color-body-dark: #ffffff;
-        --color-eyebrow: #248f54;
-        --color-eyebrow-light: #248f54;
-        --color-eyebrow-dark: #248f54;
-        --color-input: var(--color-background-light);
-        --color-input-light: var(--color-background-light);
-        --color-input-dark: var(--color-background-dark);
-        --color-input-text: var(--color-body-base);
-        --color-input-text-light: var(--color-headline-light);
-        --color-input-text-dark: var(--color-headline-dark);
-        --color-nav-text: var(--color-body-base);
-        --color-nav-text-hover: var(--color-secondary);
-        --color-nav-text-active: var(--color-secondary);
-        --color-nav-text-current: var(--color-secondary);
-        --color-nav-submenu-bg: var(--color-background-light);
-        --color-header-logo: var(--color-primary);
-        --color-footer-logo: var(--color-primary);
-    }
+[data-theme='zeus-dark'] {
 
-    
+    /* ------------------------------
+       PRIMARY + SECONDARY COLORS
+    ------------------------------ */
+    --color-primary: #4b6ed4;
+    --color-primary-light: #6c86e8;
+    --color-primary-dark: #2c49a0;
+
+    --color-secondary: #e6b800;
+    --color-secondary-light: #ffcc33;
+    --color-secondary-dark: #b38f00;
+
+    --color-accent: #6c86e8;
+
+
+    /* ------------------------------
+       BACKGROUND COLORS
+    ------------------------------ */
+    --color-background: #0d1226;          /* main background */
+    --color-background-light: #1a2144;    /* cards, sections */
+    --color-background-dark: #000000;
+
+
+    /* ------------------------------
+       TEXT COLORS
+    ------------------------------ */
+    /* Headings */
+    --color-headline: #ffffff;
+    --color-headline-light: #e5e9ff;
+    --color-headline-dark: #ffffff;
+
+    /* Body Text */
+    --color-body-base: #d7ddff;           /* readable on white & dark */
+    --color-body-light: #bac6ff;
+    --color-body-dark: #ffffff;
+
+    /* Eyebrow (date, small titles) */
+    --color-eyebrow: #8ca2ff;
+    --color-eyebrow-light: #a8b8ff;
+    --color-eyebrow-dark: #e6b800;
+
+
+    /* ------------------------------
+       INPUT COLORS
+    ------------------------------ */
+    --color-input: #1a2144;
+    --color-input-light: #1a2144;
+    --color-input-dark: #000000;
+
+    --color-input-text: #ffffff;
+    --color-input-text-light: #e5e9ff;
+    --color-input-text-dark: #ffffff;
+
+
+    /* ------------------------------
+       NAVIGATION COLORS
+    ------------------------------ */
+    --color-nav-text: #d7ddff;           
+    --color-nav-text-hover: #6c86e8;     
+    --color-nav-text-active: #4b6ed4;
+    --color-nav-text-current: #6c86e8;
+
+    --color-nav-submenu-bg: #1a2144;
+
+    --color-nav-mobile-text: #ffffff;
+    --color-nav-mobile-text-hover: #e6b800;
+    --color-nav-mobile-text-active: #ffffff;
+    --color-nav-mobile-text-current: #ffffff;
+
+
+    /* ------------------------------
+       LOGO COLORS
+    ------------------------------ */
+    --color-header-logo: #6c86e8;
+    --color-footer-logo: #6c86e8;
+
+
+    /* ------------------------------
+       POST TITLES (FIXED)
+    ------------------------------ */
+    --color-post-title: #ffffff;
+}
+
+
+
+/* ------------------------------
+   Make cards dark-friendly
+------------------------------ */
+[data-theme='zeus-dark'] .card,
+[data-theme='zeus-dark'] .post-card,
+[data-theme='zeus-dark'] .bg-white {
+    background-color: #1a2144 !important;
+}
+
+
+/* ------------------------------
+   Dark borders on cards
+------------------------------ */
+[data-theme='zeus-dark'] .card,
+[data-theme='zeus-dark'] .post-card {
+    border-color: #2a325b !important;
+}
+
+
+/* ------------------------------
+   Ensure post titles are bright
+------------------------------ */
+[data-theme='zeus-dark'] h2,
+[data-theme='zeus-dark'] .post-title,
+[data-theme='zeus-dark'] h2.post-title {
+    color: var(--color-post-title) !important;
+}
+
+[data-theme='zeus-light'] {
+
+    /* ------------------------------
+       PRIMARY + SECONDARY COLORS
+    ------------------------------ */
+    --color-primary: #3557c1;
+    --color-primary-light: #4b6ed4;
+    --color-primary-dark: #1a3c8c;
+
+    --color-secondary: #cc9900;
+    --color-secondary-light: #e6b800;
+    --color-secondary-dark: #997300;
+
+    --color-accent: #1e3c8c;
+
+
+    /* ------------------------------
+       BACKGROUND COLORS
+    ------------------------------ */
+    --color-background: #f8f9ff;         /* light page background */
+    --color-background-light: #eef1ff;   /* cards, panels */
+    --color-background-dark: #1a1f3c;
+
+
+    /* ------------------------------
+       TEXT COLORS
+    ------------------------------ */
+    /* Headings */
+    --color-headline: #1a1f3c;
+    --color-headline-light: #1a1f3c;
+    --color-headline-dark: #ffffff;
+
+    /* Body text */
+    --color-body-base: #1a1f3c;
+    --color-body-light: #1a1f3c;
+    --color-body-dark: #ffffff;
+
+    /* Small labels (dates, tags) */
+    --color-eyebrow: #1e3c8c;
+    --color-eyebrow-light: #1e3c8c;
+    --color-eyebrow-dark: #e6b800;
+
+
+    /* ------------------------------
+       INPUTS
+    ------------------------------ */
+    --color-input: var(--color-background-light);
+    --color-input-light: var(--color-background-light);
+    --color-input-dark: var(--color-background-dark);
+
+    --color-input-text: var(--color-body-base);
+    --color-input-text-light: var(--color-headline-light);
+    --color-input-text-dark: var(--color-headline-dark);
+
+
+    /* ------------------------------
+       NAVIGATION COLORS
+    ------------------------------ */
+    --color-nav-text: var(--color-body-base);
+    --color-nav-text-hover: var(--color-primary);
+    --color-nav-text-active: var(--color-primary);
+    --color-nav-text-current: var(--color-primary);
+
+    --color-nav-submenu-bg: var(--color-background-light);
+
+    --color-nav-mobile-text: #ffffff;
+    --color-nav-mobile-text-hover: #e6b800;
+    --color-nav-mobile-text-active: #ffffff;
+    --color-nav-mobile-text-current: #ffffff;
+
+
+    /* ------------------------------
+       LOGO COLORS
+    ------------------------------ */
+    --color-header-logo: var(--color-primary);
+    --color-footer-logo: var(--color-primary);
+
+
+    /* ------------------------------
+       POST TITLES (strong navy)
+    ------------------------------ */
+    --color-post-title: #1a1f3c;
+}
+
+
+
+/* ------------------------------
+   LIGHT MODE CARD STYLING
+------------------------------ */
+[data-theme='zeus-light'] .card,
+[data-theme='zeus-light'] .post-card,
+[data-theme='zeus-light'] .bg-white {
+    background-color: var(--color-background-light) !important;
+    border-color: #dbe0ff !important;
+}
+
+
+/* ------------------------------
+   POST TITLES
+------------------------------ */
+[data-theme='zeus-light'] h2,
+[data-theme='zeus-light'] .post-title,
+[data-theme='zeus-light'] h2.post-title {
+    color: var(--color-post-title) !important;
+}
+
+
 }
 
 @layer components {

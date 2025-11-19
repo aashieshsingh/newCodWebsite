@@ -4,7 +4,7 @@ excerpt: "Supervisor's Training  Day 1  by  Government Medical College Thrissur 
 featuredImage: "./images/kerela.jpg"
 publishDate: "2025-10-29"
 publish: true
-categories: ["News"]
+categories: ["News","Training"]
 
 seo:
   title: "How to build pages with Titan Core components"

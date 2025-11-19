@@ -4,7 +4,7 @@ excerpt: "Training conducted in Bihar by AIIMS Patna in collaboration with DCO B
 featuredImage: "./images/bihar.jpg"
 publishDate: "2025-09-09"
 publish: true
-categories: ["Announcements"]
+categories: ["Announcements","Training"]
 
 seo:
   title: "Supervisor Training conducted in Bihar by AIIMS Patna"
