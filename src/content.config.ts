@@ -76,4 +76,15 @@ const legal = defineCollection({
     }),
 });
 
-export const collections = { blog, team, legal };
+const albums = defineCollection({
+  loader: glob({ base: './src/content/albums', pattern: '**/index.md' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    cover: z.string().optional(), // e.g., "cover.jpg"
+    date: z.string().optional(),
+    slug: z.string().optional()
+  }),
+});
+
+export const collections = { blog, team, legal, albums };

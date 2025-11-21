@@ -2,14 +2,14 @@
 import Layout from "@layouts/Layout.astro";
 
 const team = [
-  { name: "Dr. Anand Krishnan", role: "Professor" },
-  { name: "Dr. Baridalyne N", role: "Professor" },
-  { name: "Dr. Sumit Malhotra", role: "Professor" },
-  { name: "Dr. Ravneet Kaur", role: "Additional Professor" },
-  { name: "Dr. Vivek Gupta", role: "Additional Professor" },
-  { name: "Dr. Harshal Salve", role: "Additional Professor" },
-  { name: "Dr. Rakesh Kumar", role: "Additional Professor" },
-  { name: "Dr. Mohan Bairwa", role: "Associate Professor" },
+  { name: "Dr. Anand Krishnan", role: "Professor", institution: "AIIMS, New Delhi" },
+  { name: "Dr. Baridalyne N", role: "Professor", institution: "AIIMS, New Delhi" },
+  { name: "Dr. Sumit Malhotra", role: "Professor", institution: "AIIMS, New Delhi" },
+  { name: "Dr. Ravneet Kaur", role: "Additional Professor", institution: "AIIMS, New Delhi" },
+  { name: "Dr. Vivek Gupta", role: "Additional Professor", institution: "AIIMS, New Delhi" },
+  { name: "Dr. Harshal Salve", role: "Additional Professor", institution: "AIIMS, New Delhi" },
+  { name: "Dr. Rakesh Kumar", role: "Additional Professor", institution: "AIIMS, New Delhi" },
+  { name: "Dr. Mohan Bairwa", role: "Associate Professor", institution: "AIIMS, New Delhi" },
 ];
 ---
 
@@ -19,15 +19,16 @@ const team = [
     <div class="max-w-6xl mx-auto px-4 space-y-8">
 
       <h2 class="text-3xl font-semibold text-center text-gray-900">
-        ATSU Members
+        AIIMS Technical Support Unit - Members
       </h2>
 
       <div class="shadow-lg rounded-2xl border border-gray-200 overflow-hidden">
 
         <!-- Desktop Table Header -->
-        <div class="hidden md:grid md:grid-cols-2 bg-blue-600 text-white uppercase text-xs font-semibold">
+        <div class="hidden md:grid md:grid-cols-3 bg-blue-600 text-white uppercase text-xs font-semibold">
           <div class="p-3">Name</div>
           <div class="p-3">Designation</div>
+          <div class="p-3">Institution</div>
         </div>
 
         <!-- Table Rows -->
@@ -39,9 +40,10 @@ const team = [
           >
 
             <!-- Desktop View -->
-            <div class="hidden md:grid md:grid-cols-2 text-sm">
+            <div class="hidden md:grid md:grid-cols-3 text-sm">
               <div class="p-3">{member.name}</div>
               <div class="p-3">{member.role}</div>
+              <div class="p-3">{member.institution}</div>
             </div>
 
             <!-- Mobile View -->
@@ -51,6 +53,9 @@ const team = [
               </div>
               <div>
                 <span class="font-medium text-gray-800">Designation:</span> {member.role}
+              </div>
+              <div>
+                <span class="font-medium text-gray-800">Institution:</span> {member.institution}
               </div>
             </div>
 
