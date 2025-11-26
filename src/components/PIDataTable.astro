@@ -58,9 +58,13 @@ const groups = Object.values(grouped);
             {item.Members.map((m) => (
               <li class="border border-gray-200 rounded-lg p-3 bg-gray-50">
                 <div class="font-semibold text-gray-900">{m.Name}</div>
-                <a href={`mailto:${m.Email}`} class="text-blue-600 underline break-all">
-                  {m.Email}
-                </a>
+                <a 
+  href={`mailto:${m.Email}`} 
+  class="mt-1 inline-flex items-center gap-2 text-sm text-gray-600 hover:text-blue-600 break-all transition"
+>
+   {m.Email}
+</a>
+
               </li>
             ))}
           </ul>

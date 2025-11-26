@@ -1,0 +1,91 @@
+---
+import Layout from "@layouts/Layout.astro";
+import InnerHero from "@components/sections/InnerHero.astro";
+import { getAlbumImages } from "../../../utils/getAlbumImages";
+
+/* REQUIRED for dynamic nested routes */
+export async function getStaticPaths() {
+  const modules = import.meta.glob("/src/content/albums/**/index.md", {
+    eager: true,
+  });
+
+  const paths = [];
+
+  for (const path in modules) {
+    const file: any = modules[path];
+
+    // /src/content/albums/tag-meeting/day1/index.md
+    const parts = path.split("/");
+
+    const album = parts[parts.length - 3];
+    const subalbum = parts[parts.length - 2];
+
+    paths.push({
+      params: {
+        album,
+        subalbum,
+      },
+      props: {
+        title: file.frontmatter.title,
+        description: file.frontmatter.description ?? "",
+      },
+    });
+  }
+
+  return paths;
+}
+
+/* Current route params */
+const { album, subalbum } = Astro.params;
+
+/* Title from index.md */
+const { title, description } = Astro.props;
+
+/* Get images only from this sub album folder */
+const images = getAlbumImages(album, subalbum);
+
+const heroContent = {
+  title,
+  description,
+};
+---
+
+<Layout>
+  <InnerHero content={heroContent} />
+
+  <section class="site-container px-4 pt-6 pb-base">
+
+    <a
+      href={`/gallery/${album}`}
+      class="inline-block mb-6 text-[var(--color-primary)] hover:underline"
+    >
+      ← Back to Sub Albums
+    </a>
+
+    {images.length === 0 && (
+      <p class="text-center text-body-base">
+        No images found in this sub album.
+      </p>
+    )}
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+      {images.map((img) => (
+        <a
+          href={img.url}
+          class="glightbox block rounded-xl overflow-hidden
+                 shadow-md hover:shadow-xl hover:-translate-y-1 transition"
+          data-gallery="album"
+        >
+          <img
+            src={img.url}
+            alt={img.filename}
+            class="w-full h-[220px] object-cover 
+                   hover:scale-110 transition-transform duration-300"
+          />
+        </a>
+      ))}
+    </div>
+
+  </section>
+
+</Layout>

@@ -6,24 +6,30 @@ publishDate: "2024-12-21"
 publish: true 
 categories: ["News","Meeting"]
 
+subAlbum:
+  album: "tag-meeting"
+  subalbum: "tag-2024"
+
 seo:
   title: "7th Minerva TAG Meeting"
   description: "Technical Advisory Group Meeting of MINErVA Network"
   image: "./images/tag.jpg"
 ---
 
-The 7th Minerva Technical Advisory Group (TAG) Meeting brought together experts, stakeholders, and project leaders to review progress, share insights, and plan the next phase of development under the Minerva framework. The meeting served as a platform for discussing strategies, assessing performance, and addressing key challenges to ensure smooth implementation of ongoing initiatives.
+The 7th MINErVA Technical Advisory Group (TAG) Meeting was held to bring together experts, partners, and project leaders. The main aim of the meeting was to review the progress of the MINErVA project, share important information, and plan the next steps.
+
+The meeting gave participants a chance to discuss ongoing work, talk about the challenges being faced, and find possible solutions. It also helped improve coordination and teamwork between different departments and institutions involved in the project.
 
 Purpose of the Meeting
 
-The Minerva TAG meetings are designed to provide strategic guidance, technical review, and policy direction for activities carried out under the Minerva program. The 7th meeting focused on:
+The MINErVA TAG meetings are organised to give guidance and support to the programme. The 7th meeting mainly focused on:
 
-Reviewing progress made since the previous TAG session
+Reviewing the progress made since the last meeting
 
-Evaluating technical deliverables and project milestones
+Checking the work completed and the milestones achieved
 
-Identifying operational challenges and solutions
+Identifying problems and discussing solutions
 
-Strengthening inter-departmental and inter-institutional collaboration
+Improving cooperation between different institutions
 
-Aligning future activities with broader program goals
+Planning future activities based on programme goals

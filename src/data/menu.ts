@@ -8,15 +8,15 @@ export const headerMenu = [
     { name: 'Process', link: '/process' },
     { name: 'Gallery', link: '/gallery' },
     { name: 'Data & Insights', link: '/insights' },
-    { name: 'Capacity Building', link: '/capacity' },
     { name: 'Resources', link: '#', showArrow: false,
         children: [
             { name: 'Guidelines & Policy Documents', link: '/guidelines' },
             { name: 'Research Papers', link: '/researchpapers' },
             { name: 'Videos', link: '/videos' },
-            { name: 'Tools ', link: '/tools' },
+    
         ]
-    }
+    },
+    { name: 'Login', link: 'https://causeofdeathindia.com/login/', target: '_blank'},
 ];
 
 export const footerMenu = [
