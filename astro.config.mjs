@@ -1,11 +1,13 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
+
 import sitemap from '@astrojs/sitemap';
 
-export default defineConfig({
-  site: 'https://test.causeofdeathindia.com',   // ★ REQUIRED FOR PRODUCTION
-  outDir: './dist',
+// Get the site URL from environment variable or use a default for local development
+const site = process.env.PUBLIC_SITE_URL || 'http://localhost:4321';
 
+export default defineConfig({
+  site,
   vite: { 
     plugins: [tailwindcss()],
     css: {
@@ -19,7 +21,6 @@ export default defineConfig({
       include: ['aos']
     }
   },
-
   markdown: {
     shikiConfig: {
       theme: 'github-dark',
@@ -30,21 +31,24 @@ export default defineConfig({
       lineNumbersPrefix: ''
     }
   },
-
   integrations: [
     sitemap({
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date(),
-      filter: (page) => !page.includes('/404'),
-      entryLimit: 10000,
+      filter: (page) => !page.includes('/404'), // Only exclude 404 page
+      entryLimit: 10000, // Increase entry limit if you have many pages
     }),
   ],
-
   image: {
+    // Allow all remote patterns (https and http)
     remotePatterns: [
-      { protocol: "https" },
-      { protocol: "http" }
+      {
+        protocol: "https"
+      },
+      {
+        protocol: "http"
+      }
     ]
   }
 });

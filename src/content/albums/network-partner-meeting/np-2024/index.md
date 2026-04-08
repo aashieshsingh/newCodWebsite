@@ -1,6 +1,6 @@
 ---
 title: "Network Partner Meeting 2024"
 cover: "./np2024.jpg"
-order: 1
+order: 2
 publish: true
 ---
