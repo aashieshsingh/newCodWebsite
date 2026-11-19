@@ -6,6 +6,7 @@ export const headerMenu = [
     { name: 'Team', link: '/team' },
     { name: 'Register', link: 'https://training.causeofdeathindia.com/join-us-as-va-coder/', target: '_blank'},
     { name: 'Process', link: '/process' },
+    { name: 'DigitVA', link: '/digitva' },
     { name: 'Gallery', link: '/gallery' },
     { name: 'Data & Insights', link: '/insights' },
     { name: 'Resources', link: '#', showArrow: false,

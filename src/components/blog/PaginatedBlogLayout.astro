@@ -6,8 +6,7 @@ import Button from '../ui/Button.astro';
 import { ChevronLeft, ChevronRight } from 'lucide-astro';
 
 
-const seoTitle = "Blog";
-const seoDescription = "Our blog is where we share our thoughts and ideas about the latest trends in the web development industry.";
+
 
 interface Props {
     posts: any[];
@@ -29,7 +28,10 @@ const {
     currentCategory 
 } = Astro.props;
 
-    // Generate pagination URLs
+    const seoTitle = `${title}${currentPage > 1 ? ` | Page ${currentPage}` : ""}`;
+const seoDescription = subtitle || `MINErVA network updates, activities, and resources: ${title}.`;
+
+// Generate pagination URLs
 const nextPage = currentPage < totalPages ? `${baseUrl}/${currentPage + 1}` : null;
 const prevPage = currentPage > 1 
 ? currentPage - 1 === 1 

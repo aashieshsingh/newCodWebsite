@@ -14,8 +14,8 @@ export const siteConfig = {
 
 export const SEO = {
   Separator: '|',
-  SiteName: 'MINErVA Network India | MINErVA: Mortality in India Established Through Verbal Autopises',
-  defaultDescription: 'MINErVA Network India | MINErVA: Mortality in India Established Through Verbal Autopises'
+  SiteName: 'MINErVA Network India | MINErVA: Mortality in India Established Through Verbal Autopsies',
+  defaultDescription: 'MINErVA Network India | MINErVA: Mortality in India Established Through Verbal Autopsies'
 
 };
   

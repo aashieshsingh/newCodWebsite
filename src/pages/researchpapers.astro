@@ -9,13 +9,18 @@ const heroContent = {
 
 const papers = [
   {
+    title: 'Strengthening mortality systems for Viksit Bharat: recommendations from the first national mortality symposium in India. The Lancet Regional Health - Southeast Asia. 2026;100897. doi:10.1016/j.lansea.2026.100897.',
+    link: 'https://doi.org/10.1016/j.lansea.2026.100897'
+  },
+  {
     title:
       'Krishnan, A., Gupta, V., Nongkynrih, B., Kumar, R., Kaur, R., Malhotra, S., Salve, H.R., Narayan, V., Gupta, A., MINErVA Network, "Mortality in India established through verbal autopsies (MINErVA): Strengthening national mortality surveillance system in India", Journal of Global Health, vol. 10, no. 2, 2020.',
     link: "https://pubmed.ncbi.nlm.nih.gov/33282224/"
   }
 ];
+
 ---
-<Layout>
+<Layout title="Research Papers" description="Read research publications about MINErVA and cause-of-death surveillance.">
   <InnerHero content={heroContent} />
 
   <!-- Breadcrumb -->
@@ -28,17 +33,12 @@ const papers = [
 
   <!-- Main Content -->
   <section class="max-w-5xl mx-auto px-4 py-12 space-y-4">
-    {papers.map((item, index) => (
-      <p class="text-[15px] leading-relaxed" key={index}>
-        <a
-          href={item.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-blue-700 hover:underline"
-        >
-          {index + 1}. {item.title}
-        </a>
-      </p>
-    ))}
+    <h2 class="text-2xl font-semibold">AIIMS New Delhi MINErVA research</h2>
+    <p class="leading-relaxed">Publications from AIIMS New Delhi on the MINErVA programme.</p>
+    <ol class="list-decimal pl-6 space-y-6">
+      {papers.map((item) => (
+        <li class="text-base leading-relaxed"><a href={item.link} target="_blank" rel="noopener noreferrer" class="text-blue-700 underline underline-offset-4">{item.title}</a></li>
+      ))}
+    </ol>
   </section>
 </Layout>

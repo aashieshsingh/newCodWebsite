@@ -28,7 +28,7 @@ const videos = [
 ];
 ---
 
-<Layout>
+<Layout title="Videos" description="Watch introductions and educational videos about MINErVA and verbal autopsy.">
   <InnerHero content={heroContent} />
   <!-- Breadcrumb -->
   <nav class="bg-gray-100 border-b border-gray-300">
@@ -46,6 +46,8 @@ const videos = [
             <div class="aspect-w-16 aspect-h-9">
               <iframe
                 src={video.embed}
+                title={video.title}
+                loading="lazy"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen

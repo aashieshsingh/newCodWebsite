@@ -1,0 +1,113 @@
+---
+import Layout from '@layouts/Layout.astro';
+import InnerHero from '@components/sections/InnerHero.astro';
+import Button from '@components/ui/Button.astro';
+import { ClipboardList, WifiOff, Stethoscope, FolderCheck, ChartColumn, Users } from 'lucide-astro';
+
+const platformUrl = 'https://digitvav3.causeofdeathindia.com/vaindex';
+const repositoryUrl = 'https://github.com/drguptavivek/DigitVA';
+const features = [
+    { icon: ClipboardList, title: 'Digital interviews', description: 'Collect structured interviews using the WHO 2022 verbal autopsy questionnaire through web and mobile tools.' },
+    { icon: WifiOff, title: 'Offline collection', description: 'Conduct interviews with the DigitVA Collect Android app without connectivity and synchronise when a connection is available.' },
+    { icon: Stethoscope, title: 'Physician coding', description: 'Support cause-of-death coding with SmartVA evidence, ICD-10 and ICD-11, and WHO mortality rules through DORIS.' },
+    { icon: FolderCheck, title: 'Case management', description: 'Follow cases from death registration through interviews, physician coding, and review.' },
+    { icon: ChartColumn, title: 'Mortality reporting', description: 'Explore programme progress and cause-of-death patterns by health unit, age, sex, and cause group.' },
+    { icon: Users, title: 'Coordinated teamwork', description: 'Bring interviewers, supervisors, data managers, physicians, and reviewers together with role-based access.' },
+];
+const workflow = [
+    { title: 'Register a death', description: 'Record the death and assign the interview to the responsible team.' },
+    { title: 'Interview the family', description: 'Capture symptoms and circumstances through a structured verbal autopsy interview.' },
+    { title: 'Code the cause', description: 'A physician reviews the interview and assigns the cause with decision support.' },
+    { title: 'Review the case', description: 'Check coding and resolve corrections through the review workflow.' },
+    { title: 'Generate reports', description: 'Use dashboards and reports to understand mortality patterns.' },
+];
+---
+
+<Layout title="DigitVA | Digital Verbal Autopsy Platform" description="Explore DigitVA for digital verbal autopsy interviews, offline collection, physician cause-of-death coding, case management, and mortality reporting.">
+    <InnerHero content={{ title: 'DigitVA', description: 'Digital Verbal Autopsy Platform' }} />
+    <nav aria-label="Breadcrumb" class="border-b border-primary/15 bg-background-light">
+        <ol class="max-w-6xl mx-auto px-4 py-3 flex gap-3 text-base text-body-base">
+            <li><a href="/" class="hover:underline">Home</a></li>
+            <li aria-hidden="true">/</li>
+            <li aria-current="page">DigitVA</li>
+        </ol>
+    </nav>
+
+    <div class="digitva-page text-body-base">
+        <section class="max-w-6xl mx-auto px-4 py-16" aria-labelledby="digitva-overview">
+            <div class="grid lg:grid-cols-[1.5fr_1fr] gap-10 items-start">
+                <div>
+                    <p class="text-primary font-semibold mb-3">From interviews to mortality information</p>
+                    <h2 id="digitva-overview" class="text-headline mb-6">A connected workflow for verbal autopsy</h2>
+                    <p class="leading-relaxed mb-6">DigitVA supports the digital collection, management, and physician coding of verbal autopsy interviews. It connects field teams, doctors, and programme managers in a shared workflow to strengthen cause-of-death information.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <Button href={platformUrl} target="_blank">Open DigitVA</Button>
+                    </div>
+                </div>
+                <aside class="rounded-xl border border-primary/20 bg-background-light p-7" aria-labelledby="digitva-audience">
+                    <h3 id="digitva-audience" class="text-xl font-semibold text-headline mb-4">Who is it for?</h3>
+                    <ul class="list-disc pl-5 space-y-3">
+                        <li>Field interviewers and supervisors</li>
+                        <li>Medical officers and physician reviewers</li>
+                        <li>Data managers and researchers</li>
+                        <li>Public health programme teams</li>
+                    </ul>
+                </aside>
+            </div>
+        </section>
+
+        <section class="bg-background-light px-4 py-16" aria-labelledby="digitva-features">
+            <div class="max-w-6xl mx-auto">
+                <h2 id="digitva-features" class="text-headline mb-4">What can DigitVA do?</h2>
+                <p class="mb-8 leading-relaxed">Tools to support each stage of the verbal autopsy process.</p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {features.map(({ icon: Icon, title, description }) => (
+                        <div class="rounded-xl border border-primary/20 bg-background p-6">
+                            <Icon size={28} class="text-primary mb-5" aria-hidden="true" />
+                            <h3 class="text-xl font-semibold text-headline mb-3">{title}</h3>
+                            <p class="leading-relaxed">{description}</p>
+                        </div>
+                    ))}
+                </div>
+                <p class="mt-6 leading-relaxed">Available tools and workflows depend on the programme's configuration and each user's assigned role.</p>
+            </div>
+        </section>
+
+        <section class="max-w-6xl mx-auto px-4 py-16" aria-labelledby="digitva-workflow">
+            <h2 id="digitva-workflow" class="text-headline mb-8">How it works</h2>
+            <ol class="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                {workflow.map(({ title, description }) => (
+                    <li class="border-t-4 border-primary pt-5">
+                        <h3 class="text-lg font-semibold text-headline mb-3">{title}</h3>
+                        <p class="leading-relaxed">{description}</p>
+                    </li>
+                ))}
+            </ol>
+            <p class="mt-8 border-l-4 border-secondary bg-background-light p-5 leading-relaxed">Computer-generated results support the coding process. The final cause-of-death decision rests with the authorised physician.</p>
+        </section>
+
+        <section class="bg-background-light px-4 py-16" aria-labelledby="digitva-access">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
+                <div>
+                    <h2 id="digitva-access" class="text-headline mb-5">Explore DigitVA</h2>
+                    <p class="leading-relaxed mb-6">Visit the current platform for an overview, help guides, supporting documents, and the mobile app download. Access to project records and workspaces depends on your account permissions.</p>
+                    <Button href={platformUrl} target="_blank">Open DigitVA</Button>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-headline mb-4">Documentation and support</h3>
+                    <ul class="space-y-4">
+                        <li><a href={platformUrl} target="_blank" rel="noopener noreferrer" class="underline underline-offset-4">Platform overview, help, and mobile app</a></li>
+                        <li><a href={repositoryUrl} target="_blank" rel="noopener noreferrer" class="underline underline-offset-4">GitHub repository and technical documentation</a></li>
+                        <li><a href="/contact" class="underline underline-offset-4">Contact the team about access or a demonstration</a></li>
+                    </ul>
+                    <p class="mt-6 leading-relaxed">DigitVA's source code is available under the MIT licence. Some components, including DigitVA Collect Plus for offline physician coding, are experimental prereleases.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</Layout>
+
+<style>
+    .digitva-page { font-size: 1rem; }
+    .digitva-page a:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 4px; }
+</style>

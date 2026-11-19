@@ -45,15 +45,11 @@ const { Content } = await render(post);
 // SEO values
 const seoTitle = post.data.seo?.title || post.data.title;
 const seoDescription = post.data.seo?.description || post.data.excerpt;
-let seoImage: string | undefined = post.data.seo?.image;
+const configuredImage = post.data.seo?.image;
+const seoImage = configuredImage && /^(https?:\/\/|\/)/.test(configuredImage)
+  ? configuredImage
+  : post.data.featuredImage?.src;
 
-if (seoImage && !seoImage.startsWith('http')) {
-  const siteUrl = import.meta.env.SITE || 'https://titan-core.vercel.app';
-  seoImage = new URL(seoImage.startsWith('/') ? seoImage : `/${seoImage}`, siteUrl).toString();
-} else if (!seoImage && post.data.featuredImage) {
-  const siteUrl = import.meta.env.SITE || 'https://titan-core.vercel.app';
-  seoImage = new URL(post.data.featuredImage.src, siteUrl).toString();
-}
 ---
 
 <Layout title={seoTitle} description={seoDescription} image={seoImage}>

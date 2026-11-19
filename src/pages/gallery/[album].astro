@@ -32,7 +32,7 @@ const heroContent = {
 };
 ---
 
-<Layout>
+<Layout title={heroContent.title} description={heroContent.description || `Photographs from ${heroContent.title}, part of the MINErVA network gallery.`}>
   <InnerHero content={heroContent} />
 
   <section class="site-container px-4 pt-8 pb-base">

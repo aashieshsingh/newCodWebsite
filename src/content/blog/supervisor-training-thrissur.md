@@ -1,15 +1,14 @@
 ---
-title: "Supervisor's Training at  Government Medical College Thrissur"
-excerpt: "Supervisor's Training  Day 1  by  Government Medical College Thrissur at Thiruvananthapuram, Kerela"
+title: "Supervisor Training by Government Medical College Thrissur"
+excerpt: "Supervisor training by Government Medical College Thrissur in Thiruvananthapuram, Kerala"
 featuredImage: "./images/kerela.jpg"
 publishDate: "2025-10-29"
 publish: true
 categories: ["News","Training"]
 
 seo:
-  title: "How to build pages with Titan Core components"
-  description: "Learn how to build pages with Titan Core components"
-  image: "./images/building-pages.jpg"
+  title: "Supervisor Training by Government Medical College Thrissur"
+  description: "Verbal autopsy supervisor training organised by Government Medical College Thrissur."
 ---
 
 Government Medical College, Thrissur conducted a Supervisor’s Training Program to strengthen the skills of SRS supervisors involved in Verbal Autopsy (VA). The training, supported by the AIIMS Technical Support Unit (ATSU) and ORGI, focused on improving interview techniques, ensuring high-quality data collection, and enhancing supervisors’ understanding of their field responsibilities.

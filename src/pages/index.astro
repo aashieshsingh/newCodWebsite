@@ -42,5 +42,14 @@ const recentPostsSection = {
 <Layout title={seoTitle} description={seoDescription}>
 <Hero content={heroContent} />
 <Features content={featuresSection} padding="small" background="light" />
+<section class="bg-background-light text-body-base px-4 py-12" aria-labelledby="digitva-introduction">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row md:items-center gap-8">
+        <div class="flex-1">
+            <h2 id="digitva-introduction" class="text-headline mb-4">Introducing DigitVA</h2>
+            <p class="leading-relaxed">Discover a digital workflow for verbal autopsy interviews, physician coding, and mortality reporting.</p>
+        </div>
+        <a href="/digitva" class="inline-flex justify-center rounded-md bg-primary px-6 py-3 text-white font-medium hover:bg-primary-dark focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">Learn about DigitVA</a>
+    </div>
+</section>
 <RecentPosts content={recentPostsSection} background="base" padding="small" postsToShow={3} />
 </Layout>

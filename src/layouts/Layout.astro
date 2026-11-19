@@ -78,6 +78,20 @@ const fullCanonicalUrl = new URL(canonicalPath, siteConfig.siteUrl).toString();
 		<ThemeSwitcher />
 
 		<script>
+			// Also cover links rendered from Markdown and reusable components.
+			function updateExternalLinks() {
+				document.querySelectorAll<HTMLAnchorElement>('a[href]').forEach((link) => {
+					if (/^https?:$/.test(link.protocol) && link.origin !== window.location.origin) {
+						link.target = '_blank';
+						link.relList.add('noopener', 'noreferrer');
+					}
+				});
+			}
+			updateExternalLinks();
+			document.addEventListener('astro:page-load', updateExternalLinks);
+		</script>
+
+		<script>
 			import AOS from 'aos';
 			AOS.init({
 				duration: 800,
